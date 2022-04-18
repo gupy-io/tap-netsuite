@@ -24,8 +24,14 @@ def get_internal_name_by_name(ns, stream):
 
 def transform_data_hook(ns, stream):
     def pre_hook(data, typ, schema):
+        LOGGER.info(f"SREAM LOG = {stream}")
+        LOGGER.info(f"DATA LOG = {data}")
+        LOGGER.info(f"TYP LOG = {typ}")
+        LOGGER.info(f"SCHEMA LOG = {schema}")
+        
+
         internal_name_by_property = get_internal_name_by_name(ns, stream)
-        result = data
+        result = data        
         if isinstance(data, dict):
             result = {}
             schema_properties = schema.get('properties', {})
@@ -36,7 +42,7 @@ def transform_data_hook(ns, stream):
                     data_property = data_property.isoformat()
                 result[_property] = data_property
 
-            if not typ == 'object':
+            if not typ == 'object':                
                 result = json.dumps(data, default=str)
 
         # NetSuite can return the value '0.0' for integer typed fields. This
