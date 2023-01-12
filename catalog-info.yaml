@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component                                       # Alterar para 'Component', 'API' ou 'Resource'
+metadata:
+  name: tap-netsuite
+  description: Singer.io tap for NetSuite
+  annotations:
+    github.com/project-slug: gupy-io/tap-netsuite
+    backstage.io/techdocs-ref: dir:. 
+spec:
+  type: service                                       # Alterar para 'service', 'website' ou 'library'
+  owner: plataforma-de-dados                          # Confome nome no GitHub ('qualificacao', 'vagas', 'candidates', por exemplo)
+  lifecycle: production                               # Alterar para 'experimental', 'production' ou 'deprecated'
